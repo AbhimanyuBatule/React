@@ -1,96 +1,90 @@
 import "./App.css";
 import News from "./Components/News";
-import React, { Component } from "react";
+import React, { useState } from "react";
 import NavBar from "./Components/NavBar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LoadingBar from "react-top-loading-bar";
 
-export default class App extends Component {
-  pageSize = 12;
-  apikey = process.env.REACT_APP_NEWS_MONKEY_API_KEY
-  state = {
-    progress: 0,
-  };
-  setProgress = (progress) => {
-    this.setState({ progress: progress });
-  };
-  render() {
+const App = ()=> {
+  let pageSize = 12;
+  const apikey = process.env.REACT_APP_NEWS_MONKEY_API_KEY
+  const [progress, setProgress] = useState(0);
     return (
       <div>
         <Router>
           <NavBar />
           <LoadingBar
             color="#f11946"
-            progress={this.state.progress}
+            progress={progress}
             height={4}
           />
           <Switch>
             <Route exact path="/">
               <News
-                setProgress={this.setProgress}
-                apikey = {this.apikey}
+                setProgress={setProgress}
+                apikey = {apikey}
                 country="in"
-                pageSize={this.pageSize}
+                pageSize={pageSize}
                 key="general"
                 category="general"
               />
             </Route>
             <Route exact path="/general">
               <News
-                setProgress={this.setProgress}
-                apikey = {this.apikey}
+                setProgress={setProgress}
+                apikey = {apikey}
                 country="in"
-                pageSize={this.pageSize}
+                pageSize={pageSize}
                 key="general"
                 category="general"
               />
             </Route>
             <Route exact path="/business">
               <News
-                setProgress={this.setProgress}
-                apikey = {this.apikey}
+                setProgress={setProgress}
+                apikey = {apikey}
                 country="in"
-                pageSize={this.pageSize}
+                pageSize={pageSize}
                 key="business"
                 category="business"
               />
             </Route>
             <Route exact path="/health">
               <News
-                setProgress={this.setProgress}
-                apikey = {this.apikey}
+                setProgress={setProgress}
+                apikey = {apikey}
                 country="in"
-                pageSize={this.pageSize}
+                pageSize={pageSize}
                 key="health"
                 category="health"
               />
             </Route>
             <Route exact path="/entertainment">
               <News
-                setProgress={this.setProgress}
-                apikey = {this.apikey}
+                setProgress={setProgress}
+                apikey = {apikey}
                 country="in"
-                pageSize={this.pageSize}
+                pageSize={pageSize}
                 key="entertainment"
                 category="entertainment"
               />
             </Route>
             <Route exact path="/sports">
               <News
-                setProgress={this.setProgress}
-                apikey = {this.apikey}
+                setProgress={setProgress}
+                apikey = {apikey}
                 country="in"
-                pageSize={this.pageSize}
+                pageSize={pageSize}
                 key="sports"
                 category="sports"
               />
             </Route>
             <Route exact path="/technology">
               <News
-                setProgress={this.setProgress}
-                apikey = {this.apikey}
+                setProgress={setProgress}
+                apikey = {apikey}
                 country="in"
-                pageSize={this.pageSize}
+                pageSize={pageSize}
                 key="technology"
                 category="technology"
               />
@@ -99,5 +93,6 @@ export default class App extends Component {
         </Router>
       </div>
     );
-  }
 }
+
+export default App;
